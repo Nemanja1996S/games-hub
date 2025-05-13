@@ -1,14 +1,17 @@
-import { Button, HStack, Image, Text } from "@chakra-ui/react"
+import { HStack, Image, Switch } from "@chakra-ui/react"
 import logo from "../assets/logo.webp"
 import { useColorMode } from "./ui/color-mode"
 
 const Navbar = () => {
     const { toggleColorMode } = useColorMode()
   return (
-    <HStack>
-        <Image src={logo} boxSize="60px"></Image>
-        <Text>Navbar</Text>
-        <Button onClick={toggleColorMode}>ColorMode</Button>
+    <HStack justifyContent="space-between" padding="10px">
+        <Image src={logo} boxSize="60px" borderRadius="15px"></Image>
+        <Switch.Root colorPalette={"green"}>
+        <Switch.HiddenInput onChange={toggleColorMode}/>
+        <Switch.Control />
+        <Switch.Label>Dark Mode</Switch.Label>
+        </Switch.Root>
     </HStack>
   )
 }
